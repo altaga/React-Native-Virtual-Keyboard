@@ -48,6 +48,14 @@ export default class VirtualKeyboard extends Component {
 		};
 	}
 
+	componentDidUpdate(prevProps) {
+		if(this.props.clear !==prevProps.clear && this.props.clear===true){
+			this.setState({
+				text:""
+			})
+		}
+	}
+
 	render() {
 		return (
 			<View style={[styles.container, this.props.style]}>
@@ -55,7 +63,7 @@ export default class VirtualKeyboard extends Component {
 				{this.Row([4, 5, 6])}
 				{this.Row([7, 8, 9])}
 				<View style={[styles.row, this.props.rowStyle]}>
-					{this.props.decimal ? this.Cell('.') : <View style={{ flex: 1 }} /> }
+					{this.props.decimal ? this.Cell('.') : <View style={{ flex: 1 }} />}
 					{this.Cell(0)}
 					{this.Backspace()}
 				</View>
@@ -66,7 +74,7 @@ export default class VirtualKeyboard extends Component {
 	Backspace() {
 		return (
 			<TouchableOpacity accessibilityLabel='backspace' style={styles.backspace} onPress={() => { this.onPress(BACK) }}
-				onLongPress={() => { if(this.props.clearOnLongPress) this.onPress(CLEAR) }}
+				onLongPress={() => { if (this.props.clearOnLongPress) this.onPress(CLEAR) }}
 			>
 				<Image source={this.props.backspaceImg} resizeMode='contain' style={this.props.applyBackspaceTint && ({ tintColor: this.props.color })} />
 			</TouchableOpacity>
