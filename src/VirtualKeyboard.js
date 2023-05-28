@@ -7,8 +7,7 @@ import {
 	Text,
 	View,
 	TouchableOpacity,
-	Image,
-	ViewPropTypes
+	Image
 } from 'react-native';
 
 import styles from './VirtualKeyboard.style';
@@ -18,19 +17,6 @@ const CLEAR = 'clear';
 const PRESS_MODE_STRING = 'string';
 
 export default class VirtualKeyboard extends Component {
-
-	static propTypes = {
-		pressMode: PropTypes.oneOf(['string', 'char']),
-		color: PropTypes.string,
-		onPress: PropTypes.func.isRequired,
-		backspaceImg: PropTypes.number,
-		applyBackspaceTint: PropTypes.bool,
-		decimal: PropTypes.bool,
-		rowStyle: ViewPropTypes.style,
-		cellStyle: ViewPropTypes.style,
-		textStyle: Text.propTypes.style,
-		clearOnLongPress: PropTypes.bool,
-	}
 
 	static defaultProps = {
 		pressMode: 'string',
